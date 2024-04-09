@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env config/seeder.js "
+  },
+
+  "dependencies": {
+    "pg": "^8.11.5"
+  }
+}
