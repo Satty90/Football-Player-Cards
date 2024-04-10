@@ -1,6 +1,7 @@
 import pool from "./pgClient.js";
 import CLUBS from "./clubs.js";
 import PLAYERS from "./players.js";
+import MANAGERS from "./managers.js";
 
 async function seederDatabase() {
   try {
@@ -15,9 +16,9 @@ async function seederDatabase() {
       CREATE TABLE clubs (
         ClubID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         Name VARCHAR (255),
-        Logo VARCHAR (255),
-        Year_Founded INT,
-        Location VARCHAR (255)
+        logo VARCHAR (255),
+        year_founded INT,
+        location VARCHAR (255)
       );
     `);
     //Create Football Cards table
@@ -44,7 +45,7 @@ async function seederDatabase() {
     //Seed the clubs table
     for (const club of CLUBS) {
       await pool.query(
-        `INSERT INTO clubs(Name, Logo, Year_Founded, Location) values($1, $2, $3, $4)`,
+        `INSERT INTO clubs(name, logo, year_founded, location) VALUES($1, $2, $3, $4)`,
         [club.name, club.logo, club.year_founded, club.location]
       );
     }
@@ -52,13 +53,25 @@ async function seederDatabase() {
     //seed the player table
     for (const player of PLAYERS) {
       await pool.query(
-        `INSERT INTO players(first_name, last_name, position, nationality, team) values($1, $2, $3, $4, $5)`,
+        `INSERT INTO players(first_name, last_name, position, nationality, team) VALUES($1, $2, $3, $4, $5)`,
         [
           player.first_name,
           player.last_name,
           player.position,
           player.nationality,
           player.team,
+        ]
+      );
+    }
+    //seed the managers table
+    for (const manager of MANAGERS) {
+      await pool.query(
+        `INSERT INTO managers(first_name, last_name, nationality, team) VALUES($1, $2, $3, $4)`,
+        [
+          manager.first_name,
+          manager.last_name,
+          manager.nationality,
+          manager.team,
         ]
       );
     }
