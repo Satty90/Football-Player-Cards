@@ -1,10 +1,27 @@
 {
+  "name": "football-player-cards",
+  "version": "0.1.0",
+  "private": true,
   "type": "module",
   "scripts": {
-    "start": "node --env-file=.env config/seeder.js "
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "node ./seeder/seeder.js"
   },
-
   "dependencies": {
-    "pg": "^8.11.5"
+    "next": "14.1.4",
+    "pg": "^8.11.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "dotenv": "^16.4.5",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0"
   }
 }
