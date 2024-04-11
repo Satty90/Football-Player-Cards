@@ -29,6 +29,7 @@ const MANAGERS = [
     nationality: "Australia",
     team: "Tottenham Hotspur F.C.",
   },
+  {},
 ];
 
 export default MANAGERS;
