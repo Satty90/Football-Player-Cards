@@ -2,16 +2,18 @@
   "name": "football-player-cards",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node -r dotenv/config ./seeder/seeder.js"
+    "seed": "node -r dotenv/config ./src/seeder/seeder.js"
   },
   "dependencies": {
     "@vercel/postgres": "^0.8.0",
     "next": "14.2.1",
+    "pg": "^8.11.5",
     "react": "^18",
     "react-dom": "^18"
   },
