@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
+import pool from "@/app/api/db";
 
 export const GET = async () => {
-  return new NextResponse("This is the clubs api");
+  const response = await pool.query("SELECT *FROM clubs");
+  const { rows } = response;
+  return NextResponse.json(rows);
 };
