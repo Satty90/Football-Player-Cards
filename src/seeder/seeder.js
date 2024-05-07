@@ -28,7 +28,9 @@ async function seederDatabase() {
         first_name VARCHAR (255) NOT NULL,
         last_name VARCHAR (255) NOT NULL,
         position VARCHAR (255) NOT NULL,
+        kit_number VARCHAR (255) NOT NULL,
         nationality VARCHAR (255) NOT NULL,
+        image VARCHAR (255) NOT NULL,
         team VARCHAR (255) NOT NULL
       );
     `);
@@ -53,12 +55,14 @@ async function seederDatabase() {
     //seed the player table
     for (const player of PLAYERS) {
       await pool.query(
-        `INSERT INTO players(first_name, last_name, position, nationality, team) VALUES($1, $2, $3, $4, $5)`,
+        `INSERT INTO players(first_name, last_name, position, kit_number, nationality, image, team) VALUES($1, $2, $3, $4, $5, $6, $7)`,
         [
           player.first_name,
           player.last_name,
           player.position,
+          player.kit_number,
           player.nationality,
+          player.image,
           player.team,
         ]
       );

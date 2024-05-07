@@ -9,7 +9,7 @@ export const GET = async (request) => {
     return NextResponse.json([]);
   }
   const response = await pool.query(
-    "SELECT * FROM players WHERE (first_name || ' ' || last_name) ILIKE $1",
+    "SELECT * FROM players WHERE (first_name || ' ' || last_name || ' ' || team || ' ' || position) ILIKE $1 LIMIT 9",
     ["%" + searchQuery + "%"]
   );
   const { rows } = response;
